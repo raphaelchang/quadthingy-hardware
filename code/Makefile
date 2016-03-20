@@ -122,7 +122,7 @@ CSRC = $(STARTUPSRC) \
        $(CHIBIOS)/os/hal/lib/streams/chprintf.c \
        $(CHIBIOS)/os/various/syscalls.c \
        $(CHIBIOS)/os/various/shell.c \
-       main.c comm_usb.c ws2812b.c bno055.c
+       main.c comm_usb.c ws2812b.c bno055.c nrf24l01.c esc.c controller.c
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.

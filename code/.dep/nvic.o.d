@@ -60,8 +60,10 @@ build/obj/nvic.o: ChibiOS_16.1.4/os/hal/ports/common/ARMCMx/nvic.c \
  ChibiOS_16.1.4/os/hal/include/adc.h \
  ChibiOS_16.1.4/os/hal/ports/STM32/LLD/ADCv2/adc_lld.h \
  ChibiOS_16.1.4/os/hal/include/can.h ChibiOS_16.1.4/os/hal/include/dac.h \
- ChibiOS_16.1.4/os/hal/include/ext.h ChibiOS_16.1.4/os/hal/include/gpt.h \
- ChibiOS_16.1.4/os/hal/include/i2c.h \
+ ChibiOS_16.1.4/os/hal/include/ext.h \
+ ChibiOS_16.1.4/os/hal/ports/STM32/LLD/EXTIv1/ext_lld.h \
+ ChibiOS_16.1.4/os/hal/ports/STM32/STM32F4xx/ext_lld_isr.h \
+ ChibiOS_16.1.4/os/hal/include/gpt.h ChibiOS_16.1.4/os/hal/include/i2c.h \
  ChibiOS_16.1.4/os/hal/ports/STM32/LLD/I2Cv1/i2c_lld.h \
  ChibiOS_16.1.4/os/hal/include/i2s.h ChibiOS_16.1.4/os/hal/include/icu.h \
  ChibiOS_16.1.4/os/hal/include/mac.h ChibiOS_16.1.4/os/hal/include/mii.h \
@@ -219,6 +221,10 @@ ChibiOS_16.1.4/os/hal/include/can.h:
 ChibiOS_16.1.4/os/hal/include/dac.h:
 
 ChibiOS_16.1.4/os/hal/include/ext.h:
+
+ChibiOS_16.1.4/os/hal/ports/STM32/LLD/EXTIv1/ext_lld.h:
+
+ChibiOS_16.1.4/os/hal/ports/STM32/STM32F4xx/ext_lld_isr.h:
 
 ChibiOS_16.1.4/os/hal/include/gpt.h:
 

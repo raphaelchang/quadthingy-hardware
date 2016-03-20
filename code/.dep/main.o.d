@@ -60,8 +60,10 @@ build/obj/main.o: main.c ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/os/hal/include/adc.h \
  ChibiOS_16.1.4/os/hal/ports/STM32/LLD/ADCv2/adc_lld.h \
  ChibiOS_16.1.4/os/hal/include/can.h ChibiOS_16.1.4/os/hal/include/dac.h \
- ChibiOS_16.1.4/os/hal/include/ext.h ChibiOS_16.1.4/os/hal/include/gpt.h \
- ChibiOS_16.1.4/os/hal/include/i2c.h \
+ ChibiOS_16.1.4/os/hal/include/ext.h \
+ ChibiOS_16.1.4/os/hal/ports/STM32/LLD/EXTIv1/ext_lld.h \
+ ChibiOS_16.1.4/os/hal/ports/STM32/STM32F4xx/ext_lld_isr.h \
+ ChibiOS_16.1.4/os/hal/include/gpt.h ChibiOS_16.1.4/os/hal/include/i2c.h \
  ChibiOS_16.1.4/os/hal/ports/STM32/LLD/I2Cv1/i2c_lld.h \
  ChibiOS_16.1.4/os/hal/include/i2s.h ChibiOS_16.1.4/os/hal/include/icu.h \
  ChibiOS_16.1.4/os/hal/include/mac.h ChibiOS_16.1.4/os/hal/include/mii.h \
@@ -91,7 +93,8 @@ build/obj/main.o: main.c ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_syscfg.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_tim.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_wwdg.h comm_usb.h \
- ws2812b.h bno055.h ChibiOS_16.1.4/os/hal/lib/streams/chprintf.h \
+ ws2812b.h bno055.h esc.h nrf24l01.h halconf.h controller.h \
+ ChibiOS_16.1.4/os/hal/lib/streams/chprintf.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/stdio.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/_ansi.h \
@@ -108,7 +111,8 @@ build/obj/main.o: main.c ChibiOS_16.1.4/os/rt/include/ch.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/types.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/stdio.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/string.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/string.h
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/string.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/math.h
 
 ChibiOS_16.1.4/os/rt/include/ch.h:
 
@@ -248,6 +252,10 @@ ChibiOS_16.1.4/os/hal/include/dac.h:
 
 ChibiOS_16.1.4/os/hal/include/ext.h:
 
+ChibiOS_16.1.4/os/hal/ports/STM32/LLD/EXTIv1/ext_lld.h:
+
+ChibiOS_16.1.4/os/hal/ports/STM32/STM32F4xx/ext_lld_isr.h:
+
 ChibiOS_16.1.4/os/hal/include/gpt.h:
 
 ChibiOS_16.1.4/os/hal/include/i2c.h:
@@ -330,6 +338,14 @@ ws2812b.h:
 
 bno055.h:
 
+esc.h:
+
+nrf24l01.h:
+
+halconf.h:
+
+controller.h:
+
 ChibiOS_16.1.4/os/hal/lib/streams/chprintf.h:
 
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h:
@@ -365,3 +381,5 @@ ChibiOS_16.1.4/os/hal/lib/streams/chprintf.h:
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/string.h:
 
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/string.h:
+
+/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/math.h:
