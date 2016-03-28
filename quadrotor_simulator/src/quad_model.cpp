@@ -7,14 +7,14 @@
 
 namespace gazebo
 {
-  class ModelPush : public ModelPlugin
+  class QuadModel : public ModelPlugin
   {
 
     // Pointer to the model
     private: physics::ModelPtr model;
     // Pointer to the update event connection
     private: event::ConnectionPtr updateConnection;
-      
+    // Pointer to the link of the model    
     private: physics::LinkPtr link;
     
     public: void Load(physics::ModelPtr _parent, sdf::ElementPtr /*_sdf*/)
@@ -25,7 +25,7 @@ namespace gazebo
       // Listen to the update event. This event is broadcast every
       // simulation iteration.
       this->updateConnection = event::Events::ConnectWorldUpdateBegin(
-          boost::bind(&ModelPush::OnUpdate, this, _1));
+          boost::bind(&QuadModel::OnUpdate, this, _1));
     }
 
     // Called by the world update start event
@@ -43,5 +43,5 @@ namespace gazebo
   };
 
   // Register this plugin with the simulator
-  GZ_REGISTER_MODEL_PLUGIN(ModelPush)
+  GZ_REGISTER_MODEL_PLUGIN(QuadModel)
 }
