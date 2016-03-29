@@ -31,11 +31,16 @@ namespace gazebo
 
         this->rosQueueThread_ =
               std::thread(std::bind(&QuadModel::QueueThread, this));
+
+        this->forces_ = math::Vector3(0,0,0);
+        this->moments_ = math::Vector3(0,0,0);
     }
 
     void QuadModel::ForceCb(const geometry_msgs::Twist::ConstPtr& msg)
     {
         ROS_INFO("Got twist message!");
+        this->forces_ = math::Vector3(msg->linear.x, msg->linear.y, msg->linear.z);
+        this->moments_ = math::Vector3(msg->angular.x, msg->angular.y, msg->angular.z);
     }
 
     void QuadModel::QueueThread()
@@ -51,10 +56,14 @@ namespace gazebo
     void QuadModel::OnUpdate(const common::UpdateInfo & /*_info*/)
     {
       this->link_ = this->model_->GetLink();
-      this->link_->AddRelativeForce(math::Vector3(1,0,10));
-      math::Vector3 f = this->link_->GetRelativeForce();
       
-      //ROS_INFO("X: %f, Y: %f, Z: %f", f[0], f[1], f[2]);
+      //publish forces and moments to model
+      this->link_->AddRelativeForce(this->forces_);
+      this->link_->AddRelativeTorque(this->moments_);
+      
+      //debug
+     // math::Vector3 f = this->link_->GetRelativeForce();
+     // ROS_INFO("X: %f, Y: %f, Z: %f", f[0], f[1], f[2]);
     }
 
   // Register this plugin with the simulator

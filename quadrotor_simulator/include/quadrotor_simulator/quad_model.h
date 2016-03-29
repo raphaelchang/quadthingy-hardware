@@ -36,6 +36,9 @@ namespace gazebo
             ros::Subscriber rosSub_;
             ros::CallbackQueue rosQueue_;
             std::thread rosQueueThread_;
+
+            math::Vector3 forces_;
+            math::Vector3 moments_;
             
     };
 }
