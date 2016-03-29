@@ -1,6 +1,7 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(controller)
 
+add_definitions(-std=c++11)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
@@ -11,6 +12,14 @@ find_package(catkin REQUIRED COMPONENTS
   std_msgs
   tf
   message_generation
+  cmake_modules
+)
+
+find_package(Eigen REQUIRED)
+
+include_directories(
+  ${catkin_INCLUDE_DIRS}
+  ${EIGEN_INCLUDE_DIR}
 )
 
 ## Generate messages in the 'msg' folder
@@ -26,11 +35,12 @@ find_package(catkin REQUIRED COMPONENTS
    std_msgs
  )
 
+
 catkin_package(
-#  INCLUDE_DIRS include
-#  LIBRARIES controller
+  INCLUDE_DIRS
+  LIBRARIES
   CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs tf message_runtime
-#  DEPENDS system_lib
+  DEPENDS Eigen
 )
 
 ###########
@@ -40,9 +50,10 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 # include_directories(include)
-include_directories(
-  ${catkin_INCLUDE_DIRS}
-)
+#include_directories(
+#  ${catkin_INCLUDE_DIRS}
+#  ${EIGEN_INCLUDE_DIR}
+#)
 
 ## Declare a C++ library
 # add_library(controller
