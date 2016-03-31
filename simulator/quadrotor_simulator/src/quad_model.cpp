@@ -38,7 +38,6 @@ namespace gazebo
 
     void QuadModel::ForceCb(const geometry_msgs::Twist::ConstPtr& msg)
     {
-        ROS_INFO("Got twist message!");
         this->forces_ = math::Vector3(msg->linear.x, msg->linear.y, msg->linear.z);
         this->moments_ = math::Vector3(msg->angular.x, msg->angular.y, msg->angular.z);
     }
