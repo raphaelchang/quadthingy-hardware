@@ -1,6 +1,0 @@
-<launch>
-  <group ns="sim">
-    <include file="$(find quadrotor_simulator)/launch/gazebo_env.launch"/>
-    <include file="$(find controller)/launch/controller.launch"/>
-  </group>
-</launch>
