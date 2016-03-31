@@ -19,8 +19,8 @@ namespace motors
 
   Node::Node(const ros::NodeHandle& pnh) : pnh_(pnh)
   {
-    motors_sub_ = pnh_.subscribe("motor_speeds", 1, &Node::motors_cb, this);
-    force_pub_ = pnh_.advertise<geometry_msgs::Twist>("force", 1); 
+    motors_sub_ = pnh_.subscribe("/motor_speeds", 1, &Node::motors_cb, this);
+    force_pub_ = pnh_.advertise<geometry_msgs::Twist>("/force", 1); 
   }
 
   void Node::motors_cb(const controller::Motors::ConstPtr& msg)

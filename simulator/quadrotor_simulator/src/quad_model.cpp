@@ -23,7 +23,7 @@ namespace gazebo
       this->rosNode_.reset(new ros::NodeHandle("quad_sim"));
       ros::SubscribeOptions so = 
         ros::SubscribeOptions::create<geometry_msgs::Twist>(
-                "/" + this->model_->GetName() + "/force",
+                "/force",
                 1,
                 boost::bind(&QuadModel::ForceCb, this, _1),
                 ros::VoidPtr(), &this->rosQueue_);
