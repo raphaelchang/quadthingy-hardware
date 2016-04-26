@@ -1,13 +1,13 @@
 build/obj/main.o: main.cpp ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/stdint.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/_default_types.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/features.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_intsup.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_stdint.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stddef.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdint.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/stdint.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/_default_types.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/features.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_intsup.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_stdint.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdbool.h \
  chconf.h ChibiOS_16.1.4/os/rt/include/chlicense.h \
  ChibiOS_16.1.4/os/rt/include/chsystypes.h \
  ChibiOS_16.1.4/os/rt/ports/ARMCMx/chcore.h \
@@ -95,44 +95,49 @@ build/obj/main.o: main.cpp ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_wwdg.h comm_usb.h \
  ws2812b.h bno055.h esc.h nrf24l01.h halconf.h controller.h \
  ChibiOS_16.1.4/os/hal/lib/streams/chprintf.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/stdio.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/_ansi.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/newlib.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/config.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/ieeefp.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/cdefs.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/reent.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/_ansi.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_types.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/_types.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/lock.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/types.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/types.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/stdio.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/string.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/string.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/math.h
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdarg.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/stdio.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/_ansi.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/newlib.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/config.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/ieeefp.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/cdefs.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/reent.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/_ansi.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_types.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/_types.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/lock.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/types.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/types.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/select.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_sigset.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_timeval.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/timespec.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_timespec.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/stdio.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/string.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/string.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/math.h
 
 ChibiOS_16.1.4/os/rt/include/ch.h:
 
 ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stddef.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdint.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/stdint.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/stdint.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/_default_types.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/_default_types.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/features.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/features.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_intsup.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_intsup.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_stdint.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_stdint.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdbool.h:
 
 chconf.h:
 
@@ -348,38 +353,48 @@ controller.h:
 
 ChibiOS_16.1.4/os/hal/lib/streams/chprintf.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdarg.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdarg.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/stdio.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/stdio.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/_ansi.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/_ansi.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/newlib.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/newlib.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/config.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/config.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/ieeefp.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/ieeefp.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/cdefs.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/cdefs.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/reent.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/reent.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/_ansi.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/_ansi.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_types.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_types.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/_types.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/_types.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/lock.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/lock.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/types.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/types.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/types.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/types.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/stdio.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/select.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/string.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_sigset.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/string.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_timeval.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/math.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/timespec.h:
+
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_timespec.h:
+
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/stdio.h:
+
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/string.h:
+
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/string.h:
+
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/math.h:

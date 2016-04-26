@@ -3,6 +3,7 @@
 #include "hal.h"
 #include "bno055.h"
 #include "esc.h"
+#include <Eigen/Core>
 
 vector3 orientation;
 vector3 rotation;

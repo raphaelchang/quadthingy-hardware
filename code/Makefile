@@ -8,7 +8,7 @@
 ifeq ($(USE_OPT),)
   USE_OPT = -O2 -ggdb -fomit-frame-pointer -falign-functions=16
   USE_OPT += -DBOARD_OTG_NOVBUSSENS $(build_args)
-  USE_OPT += -fsingle-precision-constant
+#  USE_OPT += -fsingle-precision-constant
 endif
 
 # C specific options here (added to USE_OPT).

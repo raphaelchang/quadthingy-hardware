@@ -1,14 +1,14 @@
 build/obj/i2c_lld.o: \
  ChibiOS_16.1.4/os/hal/ports/STM32/LLD/I2Cv1/i2c_lld.c \
  ChibiOS_16.1.4/os/hal/include/hal.h ChibiOS_16.1.4/os/hal/osal/rt/osal.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/stdint.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/_default_types.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/features.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_intsup.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_stdint.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stddef.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdint.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/stdint.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/_default_types.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/features.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_intsup.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_stdint.h \
+ /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdbool.h \
  ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h chconf.h \
  ChibiOS_16.1.4/os/rt/include/chlicense.h \
@@ -89,21 +89,21 @@ ChibiOS_16.1.4/os/hal/include/hal.h:
 
 ChibiOS_16.1.4/os/hal/osal/rt/osal.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stddef.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdint.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/stdint.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/stdint.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/_default_types.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/machine/_default_types.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/features.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/features.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_intsup.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_intsup.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_stdint.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/sys/_stdint.h:
 
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h:
+/opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdbool.h:
 
 ChibiOS_16.1.4/os/rt/include/ch.h:
 

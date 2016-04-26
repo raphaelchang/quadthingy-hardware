@@ -32,7 +32,7 @@ ifeq ($(USE_FPU),)
   USE_FPU = no
 endif
 ifneq ($(USE_FPU),no)
-  OPT += -mfloat-abi=$(USE_FPU) -mfpu=fpv4-sp-d16 -fsingle-precision-constant
+  OPT += -mfloat-abi=$(USE_FPU) -mfpu=fpv4-sp-d16# -fsingle-precision-constant
   DDEFS += -DCORTEX_USE_FPU=TRUE
   DADEFS += -DCORTEX_USE_FPU=TRUE
 else

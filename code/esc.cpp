@@ -3,8 +3,8 @@
 #include "stm32f4xx_conf.h"
 #include "esc.h"
 
-#define ESC_UPDATE_RATE		10e3
-#define TIM_CLOCK			10e6
+#define ESC_UPDATE_RATE		10000
+#define TIM_CLOCK			10000000
 #define ALL_CHANNELS		0xFF
 
 static PWMConfig pwmcfg = {
