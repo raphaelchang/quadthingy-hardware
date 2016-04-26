@@ -1,6 +1,7 @@
 #include "ch.h"
 #include "hal.h"
 #include "stm32f4xx_conf.h"
+#include "esc.h"
 
 #define ESC_UPDATE_RATE		10e3
 #define TIM_CLOCK			10e6

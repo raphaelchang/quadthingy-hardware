@@ -25,6 +25,8 @@ int main(void) {
 	RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, ENABLE);
 	palSetPadMode(GPIOC, 2, PAL_MODE_INPUT |
 			PAL_STM32_OSPEED_HIGHEST);
+	palSetPadMode(GPIOC, 1, PAL_MODE_INPUT |
+			PAL_STM32_OSPEED_HIGHEST);
 	palSetPadMode(GPIOB, 9, PAL_MODE_INPUT |
 			PAL_STM32_OSPEED_HIGHEST);
 	ws2812b_init();
@@ -34,6 +36,7 @@ int main(void) {
 	bno055_init();
 	esc_init();
 	initNRF24L01();
+	controller_init();
 	for(;;)
 	{
 		if (comm_usb_serial_is_active())

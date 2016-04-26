@@ -1,4 +1,4 @@
-build/obj/ws2812b.o: ws2812b.c ChibiOS_16.1.4/os/rt/include/ch.h \
+build/obj/ws2812b.o: ws2812b.cpp ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \

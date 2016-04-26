@@ -1,4 +1,4 @@
-build/obj/esc.o: esc.c ChibiOS_16.1.4/os/rt/include/ch.h \
+build/obj/esc.o: esc.cpp ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
@@ -92,7 +92,7 @@ build/obj/esc.o: esc.c ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_rcc.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_syscfg.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_tim.h \
- ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_wwdg.h
+ ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_wwdg.h esc.h
 
 ChibiOS_16.1.4/os/rt/include/ch.h:
 
@@ -311,3 +311,5 @@ ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_syscfg.h:
 ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_tim.h:
 
 ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_wwdg.h:
+
+esc.h:

@@ -1,12 +1,13 @@
-build/obj/controller.o: controller.c ChibiOS_16.1.4/os/rt/include/ch.h \
- ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
+build/obj/controller.o: controller.cpp controller.h bno055.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/stdint.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/_default_types.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/features.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_intsup.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_stdint.h \
+ ChibiOS_16.1.4/os/rt/include/ch.h \
+ ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h \
+ /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h \
  chconf.h ChibiOS_16.1.4/os/rt/include/chlicense.h \
  ChibiOS_16.1.4/os/rt/include/chsystypes.h \
@@ -82,13 +83,11 @@ build/obj/controller.o: controller.c ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/os/hal/ports/STM32/STM32F4xx/stm32_registry.h \
  ChibiOS_16.1.4/os/hal/include/mmc_spi.h \
  ChibiOS_16.1.4/os/hal/include/serial_usb.h \
- ChibiOS_16.1.4/os/hal/include/usb_cdc.h bno055.h esc.h
+ ChibiOS_16.1.4/os/hal/include/usb_cdc.h esc.h
 
-ChibiOS_16.1.4/os/rt/include/ch.h:
+controller.h:
 
-ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h:
-
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h:
+bno055.h:
 
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdint.h:
 
@@ -101,6 +100,12 @@ ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h:
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_intsup.h:
 
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/_stdint.h:
+
+ChibiOS_16.1.4/os/rt/include/ch.h:
+
+ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h:
+
+/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h:
 
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stdbool.h:
 
@@ -279,7 +284,5 @@ ChibiOS_16.1.4/os/hal/include/mmc_spi.h:
 ChibiOS_16.1.4/os/hal/include/serial_usb.h:
 
 ChibiOS_16.1.4/os/hal/include/usb_cdc.h:
-
-bno055.h:
 
 esc.h:

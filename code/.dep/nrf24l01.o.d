@@ -1,4 +1,4 @@
-build/obj/nrf24l01.o: nrf24l01.c nrf24l01.h halconf.h mcuconf.h \
+build/obj/nrf24l01.o: nrf24l01.cpp nrf24l01.h halconf.h mcuconf.h \
  ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/os/rt/ports/ARMCMx/compilers/GCC/chtypes.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/lib/gcc/arm-none-eabi/4.9.3/include/stddef.h \

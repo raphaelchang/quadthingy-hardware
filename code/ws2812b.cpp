@@ -54,7 +54,7 @@ void ws2812b_init(void) {
 	}
 
 	// Generate gamma correction table
-	for (int i = 0; i < 256; i++) {
+	for (i = 0; i < 256; i++) {
 		gamma_table[i] = (int)roundf(powf((float)i / 255.0, 1.0 / 0.45) * 255.0);
 	}
 

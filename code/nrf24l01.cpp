@@ -19,7 +19,7 @@ static const NRF24L01Config nrf24l01Config =
 };
 
 NRF24L01Driver nrf24l01;
-static const uint8_t addr[4] = "QUAD";
+static const uint8_t addr[5] = "QUAD";
 
 static void nrfExtCallback(EXTDriver *extp, expchannel_t channel)
 {
@@ -409,7 +409,7 @@ void nrf24l01ClearIRQ(NRF24L01Driver *nrfp, uint8_t irq)
     nrf24l01WriteRegister(nrfp, NRF24L01_REG_STATUS, irq & (NRF24L01_RX_DR | NRF24L01_TX_DS | NRF24L01_MAX_RT));
 }
 
-void nrf24l01SetRXAddress(NRF24L01Driver *nrfp, uint8_t pipe, const uint8_t addr[4])
+void nrf24l01SetRXAddress(NRF24L01Driver *nrfp, uint8_t pipe, const uint8_t addr[5])
 {
     nrf24l01WriteRegister(nrfp, NRF24L01_REG_SETUP_AW, 0b10000000);
     if ((pipe == 0) || (pipe == 1))
@@ -418,7 +418,7 @@ void nrf24l01SetRXAddress(NRF24L01Driver *nrfp, uint8_t pipe, const uint8_t addr
         nrf24l01WriteRegister(nrfp, NRF24L01_REG_RX_ADDR_P0 + pipe, *addr);
 }
 
-void nrf24l01SetTXAddress(NRF24L01Driver *nrfp, const uint8_t addr[4])
+void nrf24l01SetTXAddress(NRF24L01Driver *nrfp, const uint8_t addr[5])
 {
     nrf24l01WriteRegister(nrfp, NRF24L01_REG_SETUP_AW, 0b10000000);
     return nrf24l01WriteAddressRegister(nrfp, NRF24L01_REG_TX_ADDR, addr);

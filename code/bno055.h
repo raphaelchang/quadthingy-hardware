@@ -1,6 +1,8 @@
 #ifndef BNO055_H_
 #define BNO055_H_
 
+#include <stdint.h>
+
 #define BNO055_ADDR 0x28
 #define BNO055_ID 0xA0
 

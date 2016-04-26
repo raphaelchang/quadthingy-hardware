@@ -14,7 +14,6 @@ build/obj/syscalls.o: ChibiOS_16.1.4/os/various/syscalls.c \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/lock.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/cdefs.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/stdlib.h \
- /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/alloca.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/errno.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/errno.h \
  /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/string.h \
@@ -95,8 +94,6 @@ build/obj/syscalls.o: ChibiOS_16.1.4/os/various/syscalls.c \
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/sys/cdefs.h:
 
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/machine/stdlib.h:
-
-/usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/alloca.h:
 
 /usr/local/Cellar/gcc-arm-none-eabi-49/20150609/arm-none-eabi/include/errno.h:
 

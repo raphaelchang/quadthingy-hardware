@@ -1,5 +1,6 @@
 #include "ch.h"
 #include "hal.h"
+#include <string.h>
 #include "bno055.h"
 
 static const I2CConfig i2ccfg = {
