@@ -19,7 +19,8 @@ static const NRF24L01Config nrf24l01Config =
 };
 
 NRF24L01Driver nrf24l01;
-static const uint8_t addr[5] = "QUAD";
+static const uint8_t tx_addr[5] = {0xE7, 0xE7, 0xE7, 0xE7, 0xE7};
+static const uint8_t rx_addr[5] = {0xC1, 0xC1, 0xC1, 0xC1, 0xC1};
 
 static void nrfExtCallback(EXTDriver *extp, expchannel_t channel)
 {
@@ -34,17 +35,17 @@ static const EXTConfig extcfg =
         {EXT_CH_MODE_DISABLED, NULL},
         {EXT_CH_MODE_DISABLED, NULL},
         {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
-        {EXT_CH_MODE_DISABLED, NULL},
         {EXT_CH_MODE_FALLING_EDGE | EXT_CH_MODE_AUTOSTART | EXT_MODE_GPIOC, nrfExtCallback},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
+        {EXT_CH_MODE_DISABLED, NULL},
         {EXT_CH_MODE_DISABLED, NULL},
         {EXT_CH_MODE_DISABLED, NULL},
         {EXT_CH_MODE_DISABLED, NULL},
@@ -72,13 +73,20 @@ void initNRF24L01(void)
     nrf24l01EnableDynamicSize(&nrf24l01);
     nrf24l01EnableDynamicPipeSize(&nrf24l01, 0x3f);
 
-    nrf24l01SetTXAddress(&nrf24l01, addr);
-    nrf24l01SetRXAddress(&nrf24l01, 0, addr);
+    nrf24l01SetTXAddress(&nrf24l01, tx_addr);
+    nrf24l01SetRXAddress(&nrf24l01, 0, tx_addr);
+    nrf24l01SetRXAddress(&nrf24l01, 1, rx_addr);
     nrf24l01SetPayloadSize(&nrf24l01, 0, 32);
+    nrf24l01SetPayloadSize(&nrf24l01, 1, 32);
+    nrf24l01EnablePipes(&nrf24l01, 0);
+    nrf24l01EnablePipes(&nrf24l01, 1);
 
+    nrf24l01SetChannel(&nrf24l01, 76);
     nrf24l01FlushRX(&nrf24l01);
     nrf24l01FlushTX(&nrf24l01);
     nrf24l01ClearIRQ(&nrf24l01, NRF24L01_RX_DR | NRF24L01_TX_DS | NRF24L01_MAX_RT);
+    nrf24l01SetAutoAck(&nrf24l01, true);
+    nrf24l01SetCRC(&nrf24l01, true);
 
     nrf24l01PowerUp(&nrf24l01);
 }
@@ -90,20 +98,22 @@ static size_t writet(void *instance, const uint8_t *bp, size_t n, systime_t time
     if (instance != &nrfp->channels[0])
         return 0;
 
-    chEvtRegisterMask(&nrfp->eventSource, &nrfListener, NRF24L01_EVENT_IRQ);
+    // chEvtRegisterMask(&nrfp->eventSource, &nrfListener, NRF24L01_EVENT_IRQ);
 
     uint16_t sended = 0;
     uint8_t status_reg;
 
-    status_reg = nrf24l01GetStatus(nrfp);
+    // status_reg = nrf24l01GetStatus(nrfp);
 
-    if (status_reg & NRF24L01_TX_FULL)
-    {
-        chEvtUnregister(&nrfp->eventSource, &nrfListener);
-        return 0;
-    }
+    // if (status_reg & NRF24L01_TX_FULL)
+    // {
+    //     chEvtUnregister(&nrfp->eventSource, &nrfListener);
+    //     return 0;
+    // }
 
     nrf24l01EnterTX(nrfp);
+        palSetPad(nrfp->config->cePort, nrfp->config->cePad);
+
 
     while (sended < n)
     {
@@ -111,18 +121,32 @@ static size_t writet(void *instance, const uint8_t *bp, size_t n, systime_t time
 
         nrf24l01WritePayload(nrfp, psize, bp + sended);
 
-        if (!chEvtWaitOneTimeout(NRF24L01_EVENT_IRQ, time))
-        {
-            chEvtUnregister(&nrfp->eventSource, &nrfListener);
-            nrf24l01EnterStandby(nrfp);
-            return sended;
-        }
+        // if (!chEvtWaitOneTimeout(NRF24L01_EVENT_IRQ, time))
+        // {
+        //     chEvtUnregister(&nrfp->eventSource, &nrfListener);
+        //     nrf24l01EnterStandby(nrfp);
+        //     return sended;
+        // }
 
         status_reg = nrf24l01GetStatus(nrfp);
 
+        int count = 0;
+        // systime_t start = chVTGetSystemTimeX();
+        // systime_t end = start + time;
+        while (!(status_reg & (NRF24L01_MAX_RT | NRF24L01_TX_DS)) && count++ <= ST2MS(time))
+        {
+            status_reg = nrf24l01GetStatus(nrfp);
+            // if (count++ > ST2MS(time))
+            // {
+            //     nrf24l01EnterStandby(nrfp);
+            //     return 0;
+            // }
+            chThdSleepMilliseconds(1);
+        }
+
         if (status_reg & NRF24L01_MAX_RT)
         {
-            chEvtUnregister(&nrfp->eventSource, &nrfListener);
+            // chEvtUnregister(&nrfp->eventSource, &nrfListener);
             nrf24l01ClearIRQ(nrfp, NRF24L01_MAX_RT);
             nrf24l01FlushTX(nrfp);
             nrf24l01EnterStandby(nrfp);
@@ -137,8 +161,8 @@ static size_t writet(void *instance, const uint8_t *bp, size_t n, systime_t time
 
     nrf24l01EnterStandby(nrfp);
 
-    chEvtBroadcastFlags(&((struct NRF24L01Channel*)instance)->event, CHN_OUTPUT_EMPTY | CHN_TRANSMISSION_END);
-    chEvtUnregister(&nrfp->eventSource, &nrfListener);
+    // chEvtBroadcastFlags(&((struct NRF24L01Channel*)instance)->event, CHN_OUTPUT_EMPTY | CHN_TRANSMISSION_END);
+    // chEvtUnregister(&nrfp->eventSource, &nrfListener);
 
     return sended;
 }
@@ -147,101 +171,44 @@ static size_t readt(void *instance, uint8_t *bp, size_t n, systime_t time)
 {
     event_listener_t nrfListener;
     NRF24L01Driver *nrfp = ((struct NRF24L01Channel*)instance)->nrfp;
-    struct NRF24L01Channel *chp = NULL;
-
-    for (int i = 0; i < 6; i++)
-    {
-        if (&nrfp->channels[i] == instance)
-        {
-            chp = &nrfp->channels[i];
-            break;
-        }
-    }
-
-    if (!chp)
-        return 0;
-
-    uint16_t received = 0;
-
-    chEvtRegisterMask(&nrfp->eventSource, &nrfListener, NRF24L01_EVENT_IRQ);
 
     nrf24l01EnterRX(nrfp);
+    chThdSleepMicroseconds(130);
 
-    while (received < n)
+
+    // while (chp->rxBufCount)
+    // {
+    //     uint8_t len = (n - received > chp->rxBufCount) ? chp->rxBufCount : n - received;
+    //     for (uint8_t i = 0; i < len; i++)
+    //         bp[received + i] = chp->rxBuf[(32 - chp->rxBufCount) + i];
+    //     chp->rxBufCount -= len;
+    //     received += len;
+    // }
+    uint8_t status = nrf24l01GetStatus(nrfp);
+    uint8_t status_reg = nrf24l01GetFIFOStatus(nrfp);
+    int count = 0;
+    // systime_t start = chVTGetSystemTimeX();
+    // systime_t end = start + time;
+    while (!((status & NRF24L01_RX_DR) || !(status_reg & NRF24L01_FIFO_RX_EMPTY)))
     {
-        if (chp->rxBufCount)
+        status = nrf24l01GetStatus(nrfp);
+        status_reg = nrf24l01GetFIFOStatus(nrfp);
+        if (count++ > ST2MS(time))
         {
-            uint8_t len = (n - received > chp->rxBufCount) ? chp->rxBufCount : n - received;
-            for (uint8_t i = 0; i < len; i++)
-                bp[received + i] = chp->rxBuf[(32 - chp->rxBufCount) + i];
-            chp->rxBufCount -= len;
-            received += len;
-            continue;
-        }
-        uint8_t status_reg = nrf24l01GetFIFOStatus(nrfp);
-
-        if (!(status_reg & NRF24L01_FIFO_RX_EMPTY))
-        {
-            uint8_t pipe = (status_reg >> 1) & 0x7;
-            uint8_t packetSize = nrf24l01GetSize(nrfp);
-            struct NRF24L01Channel *rxcp;
-            rxcp = &nrfp->channels[pipe];
-
-            if (rxcp != instance)
-            {
-                if ((rxcp->rxBufCount + packetSize > 32) || !rxcp->rxBufCount)
-                {
-                    //Overrun error OR empty buffer
-                    nrf24l01ReadPayload(nrfp, packetSize, rxcp->rxBuf + 32 - packetSize, &pipe);
-                    rxcp->rxBufCount = packetSize;
-                }
-                else
-                {
-                    //Move buffer and append to end
-                    for (uint8_t i = (32 - (rxcp->rxBufCount + packetSize)); i < 32 - packetSize; i++)
-                        rxcp->rxBuf[i] = rxcp->rxBuf[i + packetSize];
-
-                    nrf24l01ReadPayload(nrfp, packetSize, rxcp->rxBuf + 32 - packetSize, &pipe);
-                    rxcp->rxBufCount += packetSize;
-                }
-                chEvtBroadcastFlags(&rxcp->event, CHN_INPUT_AVAILABLE);
-            }
-            else
-            {
-                if (packetSize <= n - received)
-                {
-                    nrf24l01ReadPayload(nrfp, packetSize, bp + received, &pipe);
-                    received += packetSize;
-                }
-                else
-                {
-                    nrf24l01ReadPayload(nrfp, packetSize, rxcp->rxBuf + (32 - packetSize), &pipe);
-                    rxcp->rxBufCount = packetSize;
-                }
-            }
-            continue;
-        }
-
-        if (!chEvtWaitOneTimeout(NRF24L01_EVENT_IRQ, time))
-        {
-            chEvtUnregister(&nrfp->eventSource, &nrfListener);
             nrf24l01EnterStandby(nrfp);
-            return received;
+            chEvtUnregister(&nrfp->eventSource, &nrfListener);
+            return 0;
         }
-
-        status_reg = nrf24l01GetStatus(nrfp);
-
-        if (status_reg & NRF24L01_RX_DR)
-            nrf24l01ClearIRQ(nrfp, NRF24L01_RX_DR);
+        chThdSleepMilliseconds(1);
     }
-
-    if (chp->rxBufCount)
-        chEvtBroadcastFlags(&chp->event, CHN_INPUT_AVAILABLE);
+    nrf24l01ClearIRQ(nrfp, NRF24L01_RX_DR);
+    uint8_t pipe = (status >> 1) & 0x7;
+    uint8_t packetSize = nrf24l01GetSize(nrfp);
+    nrf24l01ReadPayload(nrfp, packetSize < n ? packetSize : n, bp, &pipe);
 
     nrf24l01EnterStandby(nrfp);
-    chEvtUnregister(&nrfp->eventSource, &nrfListener);
 
-    return received;
+    return packetSize < n ? packetSize : n;
 }
 
 static msg_t putt(void *instance, uint8_t b, systime_t time)
@@ -346,7 +313,7 @@ uint8_t nrf24l01ReadRegister(NRF24L01Driver *nrfp, uint8_t reg)
     return data[1];
 }
 
-void nrf24l01WriteAddressRegister(NRF24L01Driver *nrfp, uint8_t reg, const uint8_t value[4])
+void nrf24l01WriteAddressRegister(NRF24L01Driver *nrfp, uint8_t reg, const uint8_t value[5])
 {
     uint8_t op = NRF24L01_CMD_W_REGISTER | (reg & 0x1F);
 
@@ -356,7 +323,7 @@ void nrf24l01WriteAddressRegister(NRF24L01Driver *nrfp, uint8_t reg, const uint8
     spiUnselect(nrfp->config->spip);
 }
 
-void nrf24l01ReadAddressRegister(NRF24L01Driver *nrfp, uint8_t reg, uint8_t value[4])
+void nrf24l01ReadAddressRegister(NRF24L01Driver *nrfp, uint8_t reg, uint8_t value[5])
 {
     uint8_t op = NRF24L01_CMD_R_REGISTER | (reg & 0x1F);
 
@@ -411,7 +378,6 @@ void nrf24l01ClearIRQ(NRF24L01Driver *nrfp, uint8_t irq)
 
 void nrf24l01SetRXAddress(NRF24L01Driver *nrfp, uint8_t pipe, const uint8_t addr[5])
 {
-    nrf24l01WriteRegister(nrfp, NRF24L01_REG_SETUP_AW, 0b10000000);
     if ((pipe == 0) || (pipe == 1))
         nrf24l01WriteAddressRegister(nrfp, NRF24L01_REG_RX_ADDR_P0 + pipe, addr);
     else if ((pipe > 2) && (pipe < 6))
@@ -420,7 +386,6 @@ void nrf24l01SetRXAddress(NRF24L01Driver *nrfp, uint8_t pipe, const uint8_t addr
 
 void nrf24l01SetTXAddress(NRF24L01Driver *nrfp, const uint8_t addr[5])
 {
-    nrf24l01WriteRegister(nrfp, NRF24L01_REG_SETUP_AW, 0b10000000);
     return nrf24l01WriteAddressRegister(nrfp, NRF24L01_REG_TX_ADDR, addr);
 }
 
@@ -497,7 +462,7 @@ void nrf24l01WritePayload(NRF24L01Driver *nrfp, uint8_t size, const uint8_t *dat
     if (size > 32)
         return;
 
-    uint8_t op = NRF24L01_CMD_W_TX_PAYLOAD;
+    uint8_t op = NRF24L01_CMD_W_TX_PAYLOAD_NO_ACK;
 
     spiSelect(nrfp->config->spip);
     spiSend(nrfp->config->spip, 1, &op);
@@ -551,6 +516,9 @@ void nrf24l01EnterRX(NRF24L01Driver *nrfp)
     uint8_t reg = nrf24l01ReadRegister(nrfp, NRF24L01_REG_CONFIG);
     reg |= NRF24L01_PRIM_RX;
     nrf24l01WriteRegister(nrfp, NRF24L01_REG_CONFIG, reg);
+    // nrf24l01ClearIRQ(nrfp, NRF24L01_RX_DR | NRF24L01_TX_DS | NRF24L01_MAX_RT);
+    // nrf24l01FlushRX(nrfp);
+    // nrf24l01FlushTX(nrfp);
 
     palSetPad(nrfp->config->cePort, nrfp->config->cePad);
 }
@@ -562,12 +530,13 @@ void nrf24l01EnterTX(NRF24L01Driver *nrfp)
     uint8_t reg = nrf24l01ReadRegister(nrfp, NRF24L01_REG_CONFIG);
     reg &= ~NRF24L01_PRIM_RX;
     nrf24l01WriteRegister(nrfp, NRF24L01_REG_CONFIG, reg);
-
-    palSetPad(nrfp->config->cePort, nrfp->config->cePad);
 }
 
 void nrf24l01EnterStandby(NRF24L01Driver *nrfp)
 {
+    // uint8_t reg = nrf24l01ReadRegister(nrfp, NRF24L01_REG_CONFIG);
+    // reg &= ~NRF24L01_PRIM_RX;
+    // nrf24l01WriteRegister(nrfp, NRF24L01_REG_CONFIG, reg);
     palClearPad(nrfp->config->cePort, nrfp->config->cePad);
 }
 
@@ -576,6 +545,29 @@ void nrf24l01EnablePipes(NRF24L01Driver *nrfp, uint8_t pipes)
     uint8_t reg = nrf24l01ReadRegister(nrfp, NRF24L01_REG_EN_RXADDR);
     reg &= ~(pipes & 0x3F);
     nrf24l01WriteRegister(nrfp, NRF24L01_REG_EN_RXADDR, reg);
+}
+
+void nrf24l01SetAutoAck(NRF24L01Driver *nrfp, bool enable)
+{
+    if (enable)
+        nrf24l01WriteRegister(nrfp, NRF24L01_REG_EN_AA, 0b111111);
+    else
+        nrf24l01WriteRegister(nrfp, NRF24L01_REG_EN_AA, 0);
+}
+
+void nrf24l01SetCRC(NRF24L01Driver *nrfp, bool enable)
+{
+    uint8_t reg = nrf24l01ReadRegister(nrfp, NRF24L01_REG_CONFIG);
+    if (enable)
+    {
+        reg |= NRF24L01_EN_CRC | NRF24L01_CRCO;
+        nrf24l01WriteRegister(nrfp, NRF24L01_REG_CONFIG, reg);
+    }
+    else
+    {
+        reg &= ~NRF24L01_EN_CRC;
+        nrf24l01WriteRegister(nrfp, NRF24L01_REG_CONFIG, reg);
+    }
 }
 
 void nrf24l01ExtIRQ(NRF24L01Driver *nrfp)

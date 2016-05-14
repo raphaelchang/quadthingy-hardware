@@ -40,12 +40,32 @@ void esc_init(void) {
 			PAL_MODE_ALTERNATE(GPIO_AF_TIM5) |
 			PAL_STM32_OTYPE_PUSHPULL |
 			PAL_STM32_OSPEED_MID1);
+	palSetPadMode(GPIOC, 6, PAL_MODE_OUTPUT_PUSHPULL |
+			PAL_STM32_OTYPE_PUSHPULL |
+			PAL_STM32_OSPEED_HIGHEST);
+	palSetPadMode(GPIOC, 7, PAL_MODE_OUTPUT_PUSHPULL |
+			PAL_STM32_OTYPE_PUSHPULL |
+			PAL_STM32_OSPEED_HIGHEST);
+	palSetPadMode(GPIOC, 8, PAL_MODE_OUTPUT_PUSHPULL |
+			PAL_STM32_OTYPE_PUSHPULL |
+			PAL_STM32_OSPEED_HIGHEST);
+	palSetPadMode(GPIOC, 9, PAL_MODE_OUTPUT_PUSHPULL |
+			PAL_STM32_OTYPE_PUSHPULL |
+			PAL_STM32_OSPEED_HIGHEST);
+	palSetPad(GPIOC, 6);
+	palSetPad(GPIOC, 7);
+	palSetPad(GPIOC, 8);
+	palSetPad(GPIOC, 9);
 
 	esc_set_all(0);
 }
 
 void esc_set(uint8_t channel, double duty_cycle) {
 	uint32_t cnt_val;
+	if (duty_cycle < 0)
+		duty_cycle = 0;
+	if (duty_cycle > 1)
+		duty_cycle = 1;
 
 	cnt_val = (uint32_t)(duty_cycle * (uint32_t)TIM_CLOCK / (uint32_t)ESC_UPDATE_RATE);
 

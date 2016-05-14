@@ -173,4 +173,7 @@ void nrf24l01EnterRX(NRF24L01Driver *nrfp);
 void nrf24l01EnterTX(NRF24L01Driver *nrfp);
 void nrf24l01EnterStandby(NRF24L01Driver *nrfp);
 
+void nrf24l01SetAutoAck(NRF24L01Driver *nrfp, bool enable);
+void nrf24l01SetCRC(NRF24L01Driver *nrfp, bool enable);
+
 #endif

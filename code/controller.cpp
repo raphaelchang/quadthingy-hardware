@@ -7,24 +7,36 @@
 
 vector3 orientation;
 vector3 rotation;
-vector3 p_gains;
-vector3 i_gains;
-vector3 d_gains;
+vector3 vel_p_gains;
+vector3 vel_i_gains;
+vector3 vel_d_gains;
+vector3 pos_p_gains;
+vector3 pos_i_gains;
+vector3 pos_d_gains;
 
 void controller_init(void)
 {
-	p_gains.x = 1;
-	p_gains.y = 1;
-	p_gains.z = 1;
-	i_gains.x = 0;
-	i_gains.y = 0;
-	i_gains.z = 0;
-	d_gains.x = 0;
-	d_gains.y = 0;
-	d_gains.z = 0;
+	vel_p_gains.x = 0.01;
+	vel_p_gains.y = 0.01;
+	vel_p_gains.z = 0.05;
+	vel_i_gains.x = 0;
+	vel_i_gains.y = 0;
+	vel_i_gains.z = 0;
+	vel_d_gains.x = 0;
+	vel_d_gains.y = 0;
+	vel_d_gains.z = 0;
+	pos_p_gains.x = -0.01;
+	pos_p_gains.y = -0.01;
+	pos_p_gains.z = 0.05;
+	pos_i_gains.x = 0;
+	pos_i_gains.y = 0;
+	pos_i_gains.z = 0;
+	pos_d_gains.x = 0;
+	pos_d_gains.y = 0;
+	pos_d_gains.z = 0;
 }
 
-void controller_update(void)
+void controller_update(double throttle)
 {
 	orientation = bno055_get_vector(VECTOR_EULER);
     rotation = bno055_get_vector(VECTOR_GYROSCOPE);
@@ -32,12 +44,25 @@ void controller_update(void)
     setpoint.x = 0.0;
     setpoint.y = 0.0;
     setpoint.z = 0.0;
-    velocity_loop_update(setpoint, 0.0);
+    double errX = setpoint.x - orientation.x; // pitch error
+	double errY = setpoint.y - orientation.y; // roll error
+	double errZ = setpoint.z - orientation.z; // yaw error
+    setpoint.x = errX * pos_p_gains.x;
+    setpoint.y = errY * pos_p_gains.y;
+    setpoint.z = 0.0;//errZ * pos_p_gains.z;
+    velocity_loop_update(setpoint, throttle);
 }
 
 void velocity_loop_update(vector3 setpoint, double throttle)
 {
-	double errX = setpoint.x - rotation.x;
-	double errY = setpoint.y - rotation.y;
-	double errZ = setpoint.z - rotation.z;
+	double errX = setpoint.x - rotation.x; // pitch error
+	double errY = setpoint.y - rotation.y; // roll error
+	double errZ = setpoint.z - rotation.z; // yaw error
+	double pitchOut = errX * vel_p_gains.x;
+	double rollOut = errY * vel_p_gains.y;
+	double yawOut = errZ * vel_p_gains.z;
+	esc_set(0, throttle + pitchOut - yawOut);
+	esc_set(1, throttle - rollOut + yawOut);
+	esc_set(2, throttle - pitchOut - yawOut);
+	esc_set(3, throttle + rollOut + yawOut);
 }
