@@ -93,7 +93,7 @@ build/obj/main.o: main.cpp ChibiOS_16.1.4/os/rt/include/ch.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_syscfg.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_tim.h \
  ChibiOS_16.1.4/ext/stdperiph_stm32f4/inc/stm32f4xx_wwdg.h comm_usb.h \
- ws2812b.h bno055.h esc.h nrf24l01.h halconf.h controller.h \
+ ws2812b.h bno055.h esc.h nrf24l01.h halconf.h controller.h adc2.h \
  ChibiOS_16.1.4/os/hal/lib/streams/chprintf.h \
  /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/lib/gcc/arm-none-eabi/5.2.1/include/stdarg.h \
  /opt/homebrew-cask/Caskroom/gcc-arm-embedded/5_2-2015q4,20151219/gcc-arm-none-eabi-5_2-2015q4/arm-none-eabi/include/stdio.h \
@@ -350,6 +350,8 @@ nrf24l01.h:
 halconf.h:
 
 controller.h:
+
+adc2.h:
 
 ChibiOS_16.1.4/os/hal/lib/streams/chprintf.h:
 

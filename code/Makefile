@@ -125,7 +125,7 @@ CSRC = $(STARTUPSRC) \
 
 # C++ sources that can be compiled in ARM or THUMB mode depending on the global
 # setting.
-CPPSRC = main.cpp comm_usb.cpp ws2812b.cpp bno055.cpp nrf24l01.cpp esc.cpp controller.cpp
+CPPSRC = main.cpp comm_usb.cpp ws2812b.cpp bno055.cpp nrf24l01.cpp esc.cpp controller.cpp adc2.cpp
 
 # C sources to be compiled in ARM mode regardless of the global setting.
 # NOTE: Mixing ARM and THUMB mode enables the -mthumb-interwork compiler

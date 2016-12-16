@@ -3,7 +3,7 @@
 #include "stm32f4xx_conf.h"
 #include "esc.h"
 
-#define ESC_UPDATE_RATE		10000
+#define ESC_UPDATE_RATE		25000
 #define TIM_CLOCK			10000000
 #define ALL_CHANNELS		0xFF
 
